@@ -1,0 +1,7 @@
+# Image materialization dependencies (Python >=3.10)
+numpy>=1.24
+Pillow>=10
+tifffile>=2024.1
+imagecodecs>=2024.1
+openslide-python>=1.2
+# Also install system OpenSlide and libvips-tools; install ms-swift separately for model inference.
