@@ -1,6 +1,6 @@
-# Pathview-bench Tools
+# Pathview-Bench Tools
 
-Prepare task input images for `Pathview-bench` from official original datasets and generate runtime annotations for Swift. The tools discover available `train`, `val`, and `test` splits from the input annotations and preserve their names and task structure.
+Prepare task input images for `Pathview-Bench` from official original datasets and generate runtime annotations for Swift. The tools discover available `train`, `val`, and `test` splits from the input annotations and preserve their names and task structure.
 
 The input layout is `tasks_data/<task>/{train,val,test}.jsonl`, with a matching `{train,val,test}_meta.jsonl` for each available split. Only available splits are required. By default, both tools process all available splits; add `--splits train val` or `--splits test` to select specific splits.
 
@@ -51,9 +51,9 @@ Prepare task input images using the sample paths and metadata. Dataset-specific 
 
 ```bash
 python materialize_images.py \
-  --release-root /path/to/Pathview-bench \
+  --release-root /path/to/Pathview-Bench \
   --raw-roots raw_roots.json \
-  --runtime-root /path/to/Pathview-bench-runtime \
+  --runtime-root /path/to/Pathview-Bench-runtime \
   --apply
 ```
 
@@ -75,8 +75,8 @@ After preparing the images, resolve the relative output paths in each selected `
 
 ```bash
 python replace_placeholder_paths.py \
-  --release-root /path/to/Pathview-bench \
-  --runtime-root /path/to/Pathview-bench-runtime \
+  --release-root /path/to/Pathview-Bench \
+  --runtime-root /path/to/Pathview-Bench-runtime \
   --apply
 ```
 
@@ -85,7 +85,7 @@ The release's `images` entries are relative paths such as `images/local_fov/...`
 The resulting directory structure is:
 
 ```text
-Pathview-bench-runtime/
+Pathview-Bench-runtime/
 ├── images/
 │   ├── local_fov/
 │   └── macro_wsi/
@@ -102,7 +102,7 @@ Only the selected available splits are written to the runtime directory. For exa
 Run the Slide-FOV lesion grounding task through the `swift infer` workflow:
 
 ```bash
-PATHVIEW_ROOT=/path/to/Pathview-bench-runtime
+PATHVIEW_ROOT=/path/to/Pathview-Bench-runtime
 PATHVIEW_SPLIT=test
 CUDA_VISIBLE_DEVICES=0 swift infer \
   --model Qwen/Qwen3-VL-8B-Instruct \
